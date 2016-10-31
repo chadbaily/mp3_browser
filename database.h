@@ -5,25 +5,23 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include "mp3.h"
 using namespace std;
 using namespace boost::filesystem;
-
-class MP3;
 
 class Database { 
 
     public:
         Database();
-        list<MP3>  read();
-        list<MP3> search_title(char[] _title);
-        list<MP3> search_artist(char[] _artist);
-        list<MP3> search_album(char[] _album);
+        list<MP3>  read(string directory);
+        list<MP3> search_title(string _title);
+        list<MP3> search_artist(string _artist);
+        list<MP3> search_album(string _album);
         list<MP3> search_year(int _year);
         void show_all();
 
     private:
         list<MP3> songs;
-        string path;
 
 
 };

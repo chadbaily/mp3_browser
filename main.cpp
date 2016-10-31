@@ -4,15 +4,15 @@
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
 #include "mp3.h"
+#include "database.h"
 using namespace boost::filesystem;
 using namespace std;
 
 int main()
 {
 
-    MP3 balloon = new MP3(
+    Database * r = new Database();
 
-
-
-return 0;
+    r->read("./songs/");
+    return 0;
 }

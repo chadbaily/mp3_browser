@@ -1,35 +1,33 @@
 #include "mp3.h"
+#include <string>
+using namespace std;
 
-MP3::MP3(char[] _title, char[] _artist, char[] _album, int year, char[] comment, char _genre){
-    title = _title;
-    artist = _artist;
-    album = _album;
+MP3::MP3(char _title[], char _artist[], char _album[], int _year, char _comment[], char _genre){
+    title = string(_title);
+    artist = string(_artist);
+    album = string(_album);
     year = _year;
-    comment = _comment;
+    comment = string(_comment);
     genre = _genre;
 }
 
-char[] MP3::getYear(){
-    return year;
-}
-
-char[] MP3::getTitle(){
+string MP3::getTitle(){
     return title;
 }
 
-char[] MP3::getAlbum(){
+string MP3::getAlbum(){
     return album;
 }
 
-char[] MP3::getArtist(){
+string MP3::getArtist(){
     return artist;
 }
 
-char[] MP3::getComment(){
+string MP3::getComment(){
     return comment;
 }
 
-int MP3::getYear()
+int MP3::getYear(){
     return year;
 }
 
