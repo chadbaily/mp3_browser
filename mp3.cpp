@@ -2,11 +2,11 @@
 #include <string>
 using namespace std;
 
-MP3::MP3(char _title[], char _artist[], char _album[], int _year, char _comment[], char _genre){
+MP3::MP3(unsigned char _title[], unsigned char _artist[], unsigned char _album[], unsigned char _year[], unsigned char _comment[], char _genre){
     title = string(_title);
     artist = string(_artist);
     album = string(_album);
-    year = _year;
+    year = atoi(_year);
     comment = string(_comment);
     genre = _genre;
 }
