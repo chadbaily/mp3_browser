@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <fstream>
 #include "mp3.h"
 using namespace std;
 using namespace boost::filesystem;

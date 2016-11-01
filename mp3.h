@@ -8,7 +8,7 @@ using namespace std;
 class MP3 {
 
     public:
-        MP3(char _title[], char _artist[], char _album[], int _year, char _comment[], char _genre);
+        MP3(unsigned char _title[], unsigned char _artist[], unsigned char _album[], unsigned char _year[], unsigned char _comment[], char _genre);
         string getTitle();
         string getAlbum();
         string getArtist();
