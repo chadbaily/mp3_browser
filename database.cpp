@@ -26,7 +26,6 @@ vector<MP3*> Database::read(string directory){
                 f.seekg(filelength);
                 f.read(title, 30);
                 title[30] = 0;
-                cout << "title: " << title << endl;
 
                 char artist[31];
                 f.seekg(filelength+30L);
@@ -48,20 +47,17 @@ vector<MP3*> Database::read(string directory){
                 f.read(comment, 30);
                 comment[30] = 0;
 
-                char g[2];
+                char g;
                 f.seekg(filelength + 125L);
-                f.read(g, 1);
-                g[1] = 0;
+                f.read(&g, 1);
 
+                MP3* song = new MP3((const char*)title, (const char*)artist, (const char*)album, (const char*)year, (const char*)comment, g);
 
-                MP3* song = new MP3((const char*)title, (const char*)artist, (const char*)album, (const char*)year, (const char*)comment, (const char*)g);
                 songs.push_back(song);
             }
             f.close();
-
-
-            string current_file = it->path().string();
-            cout << current_file << endl;
+           // string current_file = it->path().string();
+           //cout << current_file << endl;
         }
     }
 
