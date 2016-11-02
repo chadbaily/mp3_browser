@@ -79,35 +79,34 @@ vector<MP3*> Database::read(string directory){
 void Database::search_title(string _title){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
-        string temp = songs[i]->getTitle();
-        bool contain = contains(temp, _title);
-        if(contain)
+        if(songs[i]->getTitle() == _title)
         {
             songs[i]->printSong();
         }
     }
+    return song;
 }
 
 void Database::search_artist(string _artist){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
-        string temp = songs[i]->getArtist();
-        if(temp.find(_artist) != string::npos)
+        if(songs[i]->getArtist() == _artist)
         {
             songs[i]->printSong();
         }
     }
+    return song;
 }
 
 void Database::search_album(string _album){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
-        string temp = songs[i]->getAlbum();
-        if(temp.find(_album) != string::npos)
+        if(songs[i]->getAlbum() == _album)
         {
             songs[i]->printSong();
         }
     }
+    return song;
 }
 
 void Database::search_year(string year){
@@ -118,6 +117,7 @@ void Database::search_year(string year){
             songs[i]->printSong();
         }
     }
+    return song;
 }
 
 void Database::show_all(){
