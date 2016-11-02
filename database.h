@@ -2,14 +2,12 @@
 #define DATABASE_H
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
-#include <boost/algorithm/string.hpp>
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
 #include "mp3.h"
 using namespace std;
-using namespace boost::algorithm;
 using namespace boost::filesystem;
 
 class Database { 

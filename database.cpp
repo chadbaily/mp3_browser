@@ -1,7 +1,6 @@
 #include "database.h"
 #include <iomanip>
 #include <fstream>
-#include <string>
 
 Database::Database(){
 }
@@ -22,17 +21,6 @@ vector<MP3*> Database::read(string directory){
             ifstream f(cur_path.c_str(), ios::in | ios::binary);
             if(f.is_open())
             {
-                char tag[4];
-                streampos taglocation = file_size(p2) - 128L;
-                f.seekg(taglocation);
-                f.read(tag, 3);
-                tag[3] = 0;
-                
-                if(string(tag) != "TAG")
-                {
-                    break;
-                }
-
                 char title[31];
                 streampos filelength = file_size(p2) - 125L;
                 f.seekg(filelength);
@@ -79,45 +67,45 @@ vector<MP3*> Database::read(string directory){
 void Database::search_title(string _title){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
-        if(songs[i]->getTitle() == _title)
+        string temp = songs[i]->getTitle();
+        if(temp.find(_title) != string::npos)
         {
             songs[i]->printSong();
         }
     }
-    return song;
 }
 
 void Database::search_artist(string _artist){
+    
     for(unsigned int i = 0; i < songs.size(); i++)
     {
-        if(songs[i]->getArtist() == _artist)
+        string temp = songs[i]->getArtist();
+        if(temp.find(_artist) != string::npos)
         {
             songs[i]->printSong();
         }
     }
-    return song;
 }
 
 void Database::search_album(string _album){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
-        if(songs[i]->getAlbum() == _album)
+        string temp = songs[i]->getAlbum();
+        if(temp.find(_album) != string::npos)
         {
-            songs[i]->printSong();
+            songs[i]->printSong();            
         }
     }
-    return song;
 }
 
-void Database::search_year(string year){
+void Database::search_year(string _year){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
-        if(songs[i]->getYear() == year)
+        if(songs[i]->getYear() == _year)
         {
             songs[i]->printSong();
         }
     }
-    return song;
 }
 
 void Database::show_all(){

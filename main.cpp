@@ -10,6 +10,8 @@
 #include <algorithm>
 #include <cctype>
 
+//chad
+
 using namespace boost::filesystem;
 using namespace std;
 
@@ -33,47 +35,36 @@ int main()
         vector<string> entry;
         copy(istream_iterator<string>(iss), istream_iterator<string>(), back_inserter(entry));
         
-        cout << entry[0] + " " + entry[1] + " " +  entry[2] + " " + entry[3] << endl;
-
-
         if(entry.empty())
         {
             cout << "You didn't enter anything!!" << endl;
         }
 
-        if(entry[0] == "artist")
+        else if(entry[0] == "artist" && entry.size() <= 2)
         {
-           if(!entry[1].empty())
-            {
+                cout <<"Artist" << endl;
                 r->search_artist(entry[1]);
-            }
         }
         
-        if(entry[0] == "title")
+        else if(entry[0] == "title" && entry.size() <= 2)
         {
-           if(!entry[1].empty())
-            {
+                cout << "Title" << cout;
                 r->search_title(entry[1]);
-            }
         }
 
-        if(entry[0] == "album")
+        else if(entry[0] == "album" && entry.size() <= 2)
         {
-           if(!entry[1].empty())
-            {
+                cout << "Album" << cout;
                 r->search_album(entry[1]);
-            }
         }
 
-       if(entry[0] == "year")
+       else if(entry[0] == "year" && entry.size() <= 2)
         {
-           if(!entry[1].empty())
-            {
+                cout << "Year" << endl;
                 r->search_year(entry[1]);
-            }
         }
 
-        if(entry[0] == "quit")
+        else if(entry[0] == "quit")
         {
             break;
         }
