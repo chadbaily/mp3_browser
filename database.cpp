@@ -65,28 +65,63 @@ vector<MP3*> Database::read(string directory){
 }
 
 vector<MP3*> Database::search_title(string _title){
-
-    return songs;
+     vector<MP3*> song;
+    for(unsigned int i = 0; i < songs.size(); i++)
+    {
+        if(songs[i]->getTitle() == _title)
+        {
+            song.push_back(songs[i]);
+        }
+    }
+    return song;
 }
 
 vector<MP3*> Database::search_artist(string _artist){
-
-    return songs;
+    vector<MP3*> song;
+    for(unsigned int i = 0; i < songs.size(); i++)
+    {
+        if(songs[i]->getArtist() == _artist)
+        {
+            song.push_back(songs[i]);
+        }
+    }
+    return song;
 }
 
 vector<MP3*> Database::search_album(string _album){
-
-    return songs;
+    vector<MP3*> song;
+    for(unsigned int i = 0; i < songs.size(); i++)
+    {
+        if(songs[i]->getAlbum() == _album)
+        {
+            song.push_back(songs[i]);
+        }
+    }
+    return song;
 }
 
-vector<MP3*> Database::search_year(int year){
-
-    return songs;
+vector<MP3*> Database::search_year(string year){
+    vector<MP3*> song;
+    for(unsigned int i = 0; i < songs.size(); i++)
+    {
+        if(songs[i]->getYear() == year)
+        {
+            song.push_back(songs[i]);
+        }
+    }
+    return song;
 }
 
 void Database::show_all(){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
          songs[i]->printSong();
+    }
+}
+
+Database::~Database(){
+    for(unsigned int i =0; i < songs.size(); i++)
+    {
+        delete songs[i];
     }
 }

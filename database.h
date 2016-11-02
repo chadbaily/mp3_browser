@@ -18,8 +18,9 @@ class Database {
         vector<MP3*> search_title(string _title);
         vector<MP3*> search_artist(string _artist);
         vector<MP3*> search_album(string _album);
-        vector<MP3*> search_year(int _year);
+        vector<MP3*> search_year(string _year);
         void show_all();
+        ~Database();
 
     private:
         vector<MP3*> songs;

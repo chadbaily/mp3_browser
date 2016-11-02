@@ -12,7 +12,7 @@ MP3::MP3(const char _title[], const char _artist[], const char _album[], const c
     album = string(_album);
     year = string(_year);
     comment = string(_comment);
-    genre = genres[_genre];
+    genre = genres[(int)_genre];
 }
 
 string MP3::getTitle(){
@@ -42,3 +42,4 @@ string MP3::getGenre(){
 void MP3::printSong(){
     cout << artist << " - " << title << " (" << album << ", " << year << ") [" << comment << "] " << genre << endl;
 }
+

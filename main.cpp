@@ -18,9 +18,9 @@ int main()
     Database * r = new Database();
 
     r->read("./songs/");
+   
+    r->search_year("2003");
     
-    r->show_all();
-
-
+    delete r;
     return 0;
 }
