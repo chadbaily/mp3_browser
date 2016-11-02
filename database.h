@@ -2,12 +2,14 @@
 #define DATABASE_H
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
+#include <boost/algorithm/string.hpp>
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
 #include "mp3.h"
 using namespace std;
+using namespace boost::algorithm;
 using namespace boost::filesystem;
 
 class Database { 
@@ -15,10 +17,10 @@ class Database {
     public:
         Database();
         vector<MP3*>  read(string directory);
-        vector<MP3*> search_title(string _title);
-        vector<MP3*> search_artist(string _artist);
-        vector<MP3*> search_album(string _album);
-        vector<MP3*> search_year(string _year);
+        void search_title(string _title);
+        void search_artist(string _artist);
+        void search_album(string _album);
+        void search_year(string _year);
         void show_all();
         ~Database();
 

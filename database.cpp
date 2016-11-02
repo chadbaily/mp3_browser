@@ -1,6 +1,7 @@
 #include "database.h"
 #include <iomanip>
 #include <fstream>
+#include <string>
 
 Database::Database(){
 }
@@ -21,6 +22,17 @@ vector<MP3*> Database::read(string directory){
             ifstream f(cur_path.c_str(), ios::in | ios::binary);
             if(f.is_open())
             {
+                char tag[4];
+                streampos taglocation = file_size(p2) - 128L;
+                f.seekg(taglocation);
+                f.read(tag, 3);
+                tag[3] = 0;
+                
+                if(string(tag) != "TAG")
+                {
+                    break;
+                }
+
                 char title[31];
                 streampos filelength = file_size(p2) - 125L;
                 f.seekg(filelength);
@@ -64,52 +76,48 @@ vector<MP3*> Database::read(string directory){
     return songs;
 }
 
-vector<MP3*> Database::search_title(string _title){
-     vector<MP3*> song;
+void Database::search_title(string _title){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
-        if(songs[i]->getTitle() == _title)
+        string temp = songs[i]->getTitle();
+        bool contain = contains(temp, _title);
+        if(contain)
         {
-            song.push_back(songs[i]);
+            songs[i]->printSong();
         }
     }
-    return song;
 }
 
-vector<MP3*> Database::search_artist(string _artist){
-    vector<MP3*> song;
+void Database::search_artist(string _artist){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
-        if(songs[i]->getArtist() == _artist)
+        string temp = songs[i]->getArtist();
+        if(temp.find(_artist) != string::npos)
         {
-            song.push_back(songs[i]);
+            songs[i]->printSong();
         }
     }
-    return song;
 }
 
-vector<MP3*> Database::search_album(string _album){
-    vector<MP3*> song;
+void Database::search_album(string _album){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
-        if(songs[i]->getAlbum() == _album)
+        string temp = songs[i]->getAlbum();
+        if(temp.find(_album) != string::npos)
         {
-            song.push_back(songs[i]);
+            songs[i]->printSong();
         }
     }
-    return song;
 }
 
-vector<MP3*> Database::search_year(string year){
-    vector<MP3*> song;
+void Database::search_year(string year){
     for(unsigned int i = 0; i < songs.size(); i++)
     {
         if(songs[i]->getYear() == year)
         {
-            song.push_back(songs[i]);
+            songs[i]->printSong();
         }
     }
-    return song;
 }
 
 void Database::show_all(){
