@@ -3,36 +3,36 @@
 #include <stdlib.h>
 using namespace std;
 
-MP3::MP3(unsigned char _title[],unsigned char _artist[],unsigned char _album[], unsigned char _year[], unsigned char _comment[], unsigned char _genre[]){
-    title =  _title;
-    artist = _artist;
-    album = _album;
-    year = _year;
-    comment = _comment;
-    genre = _genre;
+MP3::MP3(const char _title[], const char _artist[], const char _album[], const char _year[], const char _comment[], const char _genre[]){
+    title = string(_title);
+    artist = string(_artist);
+    album = string(_album);
+    year = string(_year);
+    comment = string(_comment);
+    genre = string(_genre);
 }
 
-unsigned char* MP3::getTitle(){
+string MP3::getTitle(){
     return title;
 }
 
-unsigned char* MP3::getAlbum(){
+string MP3::getAlbum(){
     return album;
 }
 
-unsigned char* MP3::getArtist(){
+string MP3::getArtist(){
     return artist;
 }
 
-unsigned char* MP3::getComment(){
+string MP3::getComment(){
     return comment;
 }
 
-unsigned char* MP3::getYear(){
+string MP3::getYear(){
     return year;
 }
 
-unsigned char* MP3::getGenre(){
+string MP3::getGenre(){
     return genre;
 }
 

@@ -8,22 +8,22 @@ using namespace std;
 class MP3 {
 
     public:
-        MP3(unsigned char _title[], unsigned char _artist[],  unsigned char _album[],  unsigned char _year[],  unsigned char _comment[], unsigned char _genre[]);
-        unsigned char* getTitle();
-        unsigned char* getAlbum();
-        unsigned char* getArtist();
-        unsigned char* getComment();
-        unsigned char* getGenre();
+        MP3(const char _title[], const char _artist[], const char _album[], const char _year[], const char _comment[], const char* _genre);
+        string getTitle();
+        string getAlbum();
+        string getArtist();
+        string getComment();
+        string getGenre();
         void printSong();
-        unsigned char* getYear();
+        string getYear();
 
     private:
-        unsigned char* artist[];
-        unsigned char* title[];
-        unsigned char* album[];
-        unsigned char* comment[];
-        unsigned char* genre[];
-        unsigned char* year[];
+        string artist;
+        string title;
+        string album;
+        string comment;
+        string genre;
+        string year;
 
 };
 #endif

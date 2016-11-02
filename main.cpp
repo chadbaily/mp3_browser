@@ -14,6 +14,9 @@ int main()
     Database * r = new Database();
 
     r->read("./songs/");
+    
+    r->show_all();
+
 
     return 0;
 }
