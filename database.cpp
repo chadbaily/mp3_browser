@@ -1,9 +1,11 @@
 #include "database.h"
+#include <iomanip>
+#include <fstream>
 
 Database::Database(){
 }
 
-list<MP3> Database::read(string directory){
+vector<MP3*> Database::read(string directory){
     path p(directory); 
     for(directory_iterator it(p); it != directory_iterator(); ++it)
     {
@@ -19,72 +21,75 @@ list<MP3> Database::read(string directory){
             ifstream f(cur_path.c_str(), ios::in | ios::binary);
             if(f.is_open())
             {
-                unsigned char title[31];
-                int length = f.tellg() - 128;
-                f.seekg(length);
+                 char title[31];
+                int filelength = f.tellg() - 128;
+                f.seekg(filelength);
                 f.read(title, 30);
                 title[30] = 0;
 
-                unsigned char artist[31];
-                f.seekg(length+30);
+                 char artist[31];
+                f.seekg(filelength+30);
                 f.read(artist, 30);
                 artist[30] = 0;
 
-                unsigned char album[31];
-                f.seekg(length+60);
+                 char album[31];
+                f.seekg(filelength+60);
                 f.read(album, 30);
                 album[30] = 0;
 
-                unsigned char year[5];
-                f.seekg(length + 90);
+                 char year[5];
+                f.seekg(filelength + 90);
                 f.read(year, 5);
                 year[4] = 0;
 
-                unsigned char comment[31];
-                f.seekg(length + 95);
+                 char comment[31];
+                f.seekg(filelength + 95);
                 f.read(comment, 30);
                 comment[30] = 0;
 
-                char g;
-                f.seekg(length + 125);
+                 char g[2];
+                f.seekg(filelength + 125);
                 f.read(g, 1);
+                g[1] = 0;
 
 
-                MP3 song = new MP3(title, artist, album, year, comment, g);
+                MP3* song = new MP3((unsigned char*)title, (unsigned char*)artist, (unsigned char*)album, (unsigned char*)year, (unsigned char*)comment, (unsigned char*)g);
                 songs.push_back(song);
             }
             f.close();
 
 
-         string current_file = it->path().string();
-                     cout << current_file << endl;
-            songs.push_back((*it));
+    //     string current_file = it->path().string();
+      //               cout << current_file << endl;
         }
     }
 
     return songs;
 }
 
-list<MP3> Database::search_title(string _title){
+vector<MP3*> Database::search_title(string _title){
 
     return songs;
 }
 
-list<MP3> Database::search_artist(string _artist){
+vector<MP3*> Database::search_artist(string _artist){
 
     return songs;
 }
 
-list<MP3> Database::search_album(string _album){
+vector<MP3*> Database::search_album(string _album){
 
     return songs;
 }
 
-list<MP3> Database::search_year(int year){
+vector<MP3*> Database::search_year(int year){
 
     return songs;
 }
 
 void Database::show_all(){
-
+    for(unsigned int i = 0; i < songs.size(); i++)
+    {
+         songs[i]->printSong();
+    }
 }
