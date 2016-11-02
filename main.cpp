@@ -15,6 +15,5 @@ int main()
 
     r->read("./songs/");
 
-    r->show_all();    
     return 0;
 }

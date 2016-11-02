@@ -18,12 +18,12 @@ class MP3 {
         unsigned char* getYear();
 
     private:
-        unsigned char artist[];
-        unsigned char title[];
-        unsigned char album[];
-        unsigned char comment[];
-        unsigned char genre[];
-        unsigned char year[];
+        unsigned char* artist[];
+        unsigned char* title[];
+        unsigned char* album[];
+        unsigned char* comment[];
+        unsigned char* genre[];
+        unsigned char* year[];
 
 };
 #endif
