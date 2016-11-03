@@ -84,6 +84,8 @@ void Database::search_title(string _title){
             songs[i]->printSong();
         }
     }
+
+    cout << "\n" << endl;
 }
 
 void Database::search_artist(string _artist){
@@ -96,6 +98,8 @@ void Database::search_artist(string _artist){
             songs[i]->printSong();
         }
     }
+
+    cout << "\n" << endl;
 }
 
 void Database::search_album(string _album){
@@ -107,6 +111,8 @@ void Database::search_album(string _album){
             songs[i]->printSong();            
         }
     }
+
+    cout << "\n" << endl;
 }
 
 void Database::search_year(string _year){
@@ -117,6 +123,8 @@ void Database::search_year(string _year){
             songs[i]->printSong();
         }
     }
+
+    cout << "\n" << endl;
 }
 
 void Database::show_all(){
@@ -124,6 +132,8 @@ void Database::show_all(){
     {
          songs[i]->printSong();
     }
+
+    cout << "\n" << endl;
 }
 
 int Database::size(){

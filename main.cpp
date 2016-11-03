@@ -69,6 +69,11 @@ int main()
         {
             break;
         }
+
+        else 
+        {
+            cout << "Huh?" << "\n" << endl;
+        }
     }
     delete r;
     return 0;
