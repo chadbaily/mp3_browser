@@ -21,6 +21,17 @@ vector<MP3*> Database::read(string directory){
             ifstream f(cur_path.c_str(), ios::in | ios::binary);
             if(f.is_open())
             {
+                char tag[4];
+                streampos taglocation = file_size(p2) - 128L;
+                f.seekg(taglocation);
+                f.read(tag, 3);
+                tag[3] = 0;
+
+                if(string(tag) != "TAG"
+                {
+                    break;
+                }
+                
                 char title[31];
                 streampos filelength = file_size(p2) - 125L;
                 f.seekg(filelength);
