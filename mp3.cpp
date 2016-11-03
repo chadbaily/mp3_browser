@@ -12,7 +12,12 @@ MP3::MP3(const char _title[], const char _artist[], const char _album[], const c
     album = string(_album);
     year = string(_year);
     comment = string(_comment);
-    genre = genres[(int)_genre];
+    if((int) _genre >= 0 && (int)_genre < 148)
+    {
+        genre = genres[(int)_genre];
+    }
+    else 
+        genre = "Unknown";
 }
 
 string MP3::getTitle(){

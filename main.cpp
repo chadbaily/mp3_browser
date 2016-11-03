@@ -23,7 +23,7 @@ int main()
     initialize_genres();
     Database * r = new Database();
     r->read("./songs/");
-    
+    cout << "Read " <<  r->size() << " MP3 files" << endl; 
     while(true)
     {
         string command;
@@ -42,26 +42,27 @@ int main()
 
         else if(entry[0] == "artist" && entry.size() <= 2)
         {
-                cout <<"Artist" << endl;
                 r->search_artist(entry[1]);
         }
         
         else if(entry[0] == "title" && entry.size() <= 2)
         {
-                cout << "Title" << cout;
                 r->search_title(entry[1]);
         }
 
         else if(entry[0] == "album" && entry.size() <= 2)
         {
-                cout << "Album" << cout;
                 r->search_album(entry[1]);
         }
 
        else if(entry[0] == "year" && entry.size() <= 2)
         {
-                cout << "Year" << endl;
                 r->search_year(entry[1]);
+        }
+
+        else if(entry[0] == "list")
+        {
+            r->show_all();
         }
 
         else if(entry[0] == "quit")

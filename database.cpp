@@ -27,11 +27,9 @@ vector<MP3*> Database::read(string directory){
                 f.read(tag, 3);
                 tag[3] = 0;
 
-                if(string(tag) != "TAG"
+                if(string(tag) == "TAG")
                 {
-                    break;
-                }
-                
+                           
                 char title[31];
                 streampos filelength = file_size(p2) - 125L;
                 f.seekg(filelength);
@@ -50,28 +48,30 @@ vector<MP3*> Database::read(string directory){
 
                 char year[5];
                 f.seekg(filelength + 90L);
-                f.read(year, 5);
+                f.read(year, 4);
                 year[4] = 0;
 
                 char comment[31];
-                f.seekg(filelength + 95L);
+                f.seekg(filelength + 94L);
                 f.read(comment, 30);
                 comment[30] = 0;
 
                 char g;
-                f.seekg(filelength + 125L);
+                f.seekg(filelength + 124L);
                 f.read(&g, 1);
 
                 MP3* song = new MP3((const char*)title, (const char*)artist, (const char*)album, (const char*)year, (const char*)comment, g);
 
                 songs.push_back(song);
+
+                }
             }
             f.close();
            // string current_file = it->path().string();
            //cout << current_file << endl;
         }
     }
-
+    
     return songs;
 }
 
@@ -124,6 +124,10 @@ void Database::show_all(){
     {
          songs[i]->printSong();
     }
+}
+
+int Database::size(){
+    return songs.size();
 }
 
 Database::~Database(){

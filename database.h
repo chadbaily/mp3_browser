@@ -19,6 +19,7 @@ class Database {
         void search_artist(string _artist);
         void search_album(string _album);
         void search_year(string _year);
+        int size();
         void show_all();
         ~Database();
 
