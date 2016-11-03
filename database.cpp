@@ -27,7 +27,7 @@ vector<MP3*> Database::read(string directory){
                 f.read(tag, 3);
                 tag[3] = 0;
 
-                if(string(tag) == "TAG")
+                if(string(tag) == "TAG"|| string(tag) == "tag")
                 {
                            
                 char title[31];
@@ -61,7 +61,7 @@ vector<MP3*> Database::read(string directory){
                 f.read(&g, 1);
 
                 MP3* song = new MP3((const char*)title, (const char*)artist, (const char*)album, (const char*)year, (const char*)comment, g);
-
+                
                 songs.push_back(song);
 
                 }

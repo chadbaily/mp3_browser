@@ -27,7 +27,7 @@ int main()
     while(true)
     {
         string command;
-        cout << "type 'list' or enter a query: [artist/title/album/year] [query]" << endl;
+        cout << "Type 'list' or enter a query: [artist/title/album/year] [query]" << endl;
         getline(cin, command);
         //transform(command.begin(), command.end(), command.begin(), ::tolower);
         istringstream iss(command);
